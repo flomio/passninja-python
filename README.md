@@ -12,8 +12,8 @@ Use <a href="https://passninja.com/docs">passninja-python</a> as a PyPi or Anaco
     <a href="https://github.com/flomio/passninja-python/issues">
         <img alt="Issues" src="https://img.shields.io/github/issues/flomio/passninja-cs.svg" />
     </a>
-    <a href="https://www.npmjs.com/package/@passninja/passninja-python">
-        <img alt="npm package" src="https://img.shields.io/npm/v/@passninja/passninja-cs.svg?style=flat-square" />
+    <a href="https://www.pypi.com/package/@passninja/passninja-python">
+        <img alt="pypi package" src="https://img.shields.io/pypi/v/@passninja/passninja-cs.svg?style=flat-square" />
     </a>
 </div>
 
