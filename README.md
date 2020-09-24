@@ -10,10 +10,10 @@ Use <a href="https://passninja.com/docs">passninja-python</a> as a PyPi or Anaco
         <img alt="Status" src="https://img.shields.io/badge/status-active-success.svg" />
     </a>
     <a href="https://github.com/flomio/passninja-python/issues">
-        <img alt="Issues" src="https://img.shields.io/github/issues/flomio/passninja-js.svg" />
+        <img alt="Issues" src="https://img.shields.io/github/issues/flomio/passninja-cs.svg" />
     </a>
     <a href="https://www.npmjs.com/package/@passninja/passninja-python">
-        <img alt="npm package" src="https://img.shields.io/npm/v/@passninja/passninja-js.svg?style=flat-square" />
+        <img alt="npm package" src="https://img.shields.io/npm/v/@passninja/passninja-cs.svg?style=flat-square" />
     </a>
 </div>
 
