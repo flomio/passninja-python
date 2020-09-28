@@ -1,0 +1,13 @@
+interactions:
+- request:
+    body: null
+    headers:
+      content-type: [application/json]
+    method: DELETE
+    uri: https://api.passninja.com/v1/passes/demo.coupon/2dcf7187-4eea-42a2-aabe-d7ca5a78f3dd
+  response:
+    body: {string: '{}'}
+    headers:
+      Content-Type: [application/json]
+    status: {code: 200, message: OK}
+version: 1

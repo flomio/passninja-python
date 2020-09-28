@@ -1,0 +1,19 @@
+interactions:
+- request:
+    body: '{"passType": "demo.coupon", "pass": {"logoText": "Put Example Loyalty",
+      "organizationName": "Put my org", "description": "Put this is a loyalty card",
+      "expiration": "2025-12-01T23:59:59Z", "memberName": "Put Victoria", "specialOffer":
+      "Put Free Drinks at 4:30PM!", "loyaltyLevel": "put level one", "barcode": "www.put.com"}}'
+    headers:
+      content-type: [application/json]
+    method: PUT
+    uri: https://api.passninja.com/v1/passes/demo.coupon/2dcf7187-4eea-42a2-aabe-d7ca5a78f3dd
+  response:
+    body: {string: '{"passType":"demo.coupon","serialNumber":"2dcf7187-4eea-42a2-aabe-d7ca5a78f3dd","pass":{"logoText":"Put
+        Example Loyalty","organizationName":"Put my org","description":"Put this is
+        a loyalty card","expiration":"2025-12-01T23:59:59Z","memberName":"Put Victoria","specialOffer":"Put
+        Free Drinks at 4:30PM!","loyaltyLevel":"put level one","barcode":"www.put.com"},"urls":{"landing":"https://www.passninja.com/installs/Ao_VS8ces.html","google":"https://s3.amazonaws.com/www.passninja.com-artifacts/passes/demo.coupon/2dcf7187-4eea-42a2-aabe-d7ca5a78f3dd/google.link?AWSAccessKeyId=ASIAY5CUFZ2D7RGU2LW5&Expires=1601756619&Signature=%2FlBJdaSeOHakvsPG%2BgJskVa59Eo%3D&x-amz-security-token=IQoJb3JpZ2luX2VjELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIQDHxoHhHImoyc5kf9BzpHTfY94k8%2BG%2FFQBEsex8%2FdgeNwIgNcmOLIWcWSWCfGtuadF680%2BmmvtCi2JTwUcaCdhFVlIq1gEIrf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2MTIyMDkzODA5OTkiDApshKVJ4O7c7hCZPiqqAZQxllngLeMaGjU8KDuJEze5eilSxOCwawDnUeUBYRre4nHA7A26ELQhhEPrLH1E7t7Cf1vxEGbTvaCy5Iz%2Fb0%2FSqPrfUfdmiiWnXbGymYz4PqPaJyRtipYpxVXaCs%2BqfzfL5cMi5Huie0wnUQxovjSYYMYGVLO3e%2BQqeLzElNyT3RiCIJIDoCM4yYUdsRO%2FTiodnIYd8wXrPJ%2BM8bK33ZKjrh5Jokc9Rz2%2FMJifxfoFOuAB2agjjkY8r0jl8InhizqUYjPOaRjSuIbEm%2BGD3UiHBLJWIUSkeOjOYC938My0%2FLw9PlZHItc8%2Fi7OQAWbXVGxTkU1ILqieII%2BAGnoz6pwBsYfQyQ9DMIbRl%2F%2Ff7pNkT%2F27kxuycs1463Dwd4ty6D76M8o6ipAbnAyJDejx3rWUh5Go9B0Rgs2iNG4Q%2Bc9LK0j9%2F68deIn%2FHfx4lbjH9AFBZTgeHrfzj8XbUDndT3cGd1%2BQUqDK25JQV7T4Fx8poonMElkuV6pkDNd9oxZqwZIUJbuyFhEZ%2FYwQ5kVWBCI8%2Fg%3D","apple":"https://s3.amazonaws.com/www.passninja.com-artifacts/passes/demo.coupon/2dcf7187-4eea-42a2-aabe-d7ca5a78f3dd/apple.pkpass?AWSAccessKeyId=ASIAY5CUFZ2D7RGU2LW5&Expires=1601756619&Signature=0X70GIT2%2B7EcJuv2tSdhpfhsTBk%3D&x-amz-security-token=IQoJb3JpZ2luX2VjELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIQDHxoHhHImoyc5kf9BzpHTfY94k8%2BG%2FFQBEsex8%2FdgeNwIgNcmOLIWcWSWCfGtuadF680%2BmmvtCi2JTwUcaCdhFVlIq1gEIrf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2MTIyMDkzODA5OTkiDApshKVJ4O7c7hCZPiqqAZQxllngLeMaGjU8KDuJEze5eilSxOCwawDnUeUBYRre4nHA7A26ELQhhEPrLH1E7t7Cf1vxEGbTvaCy5Iz%2Fb0%2FSqPrfUfdmiiWnXbGymYz4PqPaJyRtipYpxVXaCs%2BqfzfL5cMi5Huie0wnUQxovjSYYMYGVLO3e%2BQqeLzElNyT3RiCIJIDoCM4yYUdsRO%2FTiodnIYd8wXrPJ%2BM8bK33ZKjrh5Jokc9Rz2%2FMJifxfoFOuAB2agjjkY8r0jl8InhizqUYjPOaRjSuIbEm%2BGD3UiHBLJWIUSkeOjOYC938My0%2FLw9PlZHItc8%2Fi7OQAWbXVGxTkU1ILqieII%2BAGnoz6pwBsYfQyQ9DMIbRl%2F%2Ff7pNkT%2F27kxuycs1463Dwd4ty6D76M8o6ipAbnAyJDejx3rWUh5Go9B0Rgs2iNG4Q%2Bc9LK0j9%2F68deIn%2FHfx4lbjH9AFBZTgeHrfzj8XbUDndT3cGd1%2BQUqDK25JQV7T4Fx8poonMElkuV6pkDNd9oxZqwZIUJbuyFhEZ%2FYwQ5kVWBCI8%2Fg%3D"}}'}
+    headers:
+      Content-Type: [application/json]
+    status: {code: 200, message: OK}
+version: 1

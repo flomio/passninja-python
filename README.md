@@ -24,8 +24,88 @@ Use <a href="https://passninja.com/docs">passninja-python</a> as a PyPi or Anaco
 - [Usage](#usage)
   - [`PassNinjaClient`](#passninjaclient)
   - [`PassNinjaClient Methods`](#passninjaclientmethods)
-  - [Script Tag](#script-tag)
   - [Examples](#examples)
-- [TypeScript support](#typescript-support)
 - [Documentation](#documentation)
 
+# Installation
+
+Install via pip:
+
+```sh
+pip install passninja
+```
+
+# Usage
+
+## `PassNinjaClient`
+
+Use this class to create a `PassNinjaClient` object. Make sure to
+pass your user credentials to make any authenticated requests.
+
+```python
+import passninja
+
+account_id = '**your-account-id**'
+api_key = '**your-api-key**'
+
+pass_ninja_client = passninja.PassNinjaClient(account_id, api_key)
+```
+
+We've placed our demo user API credentials in this example. Replace it with your
+[actual API credentials](https://passninja.com/auth/profile) to test this code
+through your PassNinja account and don't hesitate to contact
+[PassNinja](https://passninja.com) with our built in chat system if you'd like
+to subscribe and create your own custom pass type(s).
+
+For more information on how to use `passninja-python` once it loads, please refer to
+the [PassNinja JS API reference](https://passninja.com/docs/js)
+
+## `PassNinjaClientMethods`
+
+This library currently supports methods for creating, getting, updating, and
+deleting passes via the PassNinja api. The methods are outlined below.
+
+### Create
+
+```python
+simple_pass_object = pass_ninja_client.pass_create(
+    'demo.coupon', # passType
+    {'discount': '50%', 'memberName': 'John'} # passData
+)
+print(simple_pass_object.url)
+print(simple_pass_object.passType)
+print(simple_pass_object.serialNumber)
+```
+
+### Get
+
+```python
+detailed_pass_object = pass_ninja_client.pass_get(
+    'demo.coupon', # passType
+    '97694bd7-3493-4b39-b805-20e3e5e4c770' # serialNumber
+)
+```
+
+### Update
+
+```python
+simple_pass_object = pass_ninja_client.pass_put(
+    'demo.coupon', # passType
+    '97694bd7-3493-4b39-b805-20e3e5e4c770', # serialNumber
+    {'discount': '100%', 'memberName': 'Ted'} # passData
+)
+```
+
+### Delete
+
+```python
+deleted_pass_serial_number = pass_ninja_client.pass_delete(
+    'demo.coupon', # passType,
+    '97694bd7-3493-4b39-b805-20e3e5e4c770' # serialNumber
+)
+print('Pass deleted. Serial_number: ', deleted_pass_serial_number)
+```
+
+# Documentation
+
+- [PassNinja Docs](https://passninja.com/documentation)

@@ -1,0 +1,40 @@
+interactions:
+- request:
+    body: null
+    headers:
+      content-type: [application/json]
+    method: GET
+    uri: https://api.passninja.com/v1/passtypes/keys/demo.coupon
+  response:
+    body: {string: '{"passType":"demo.coupon","keys":["barcode","description","expiration","logoText","loyaltyLevel","memberName","organizationName","specialOffer"]}'}
+    headers:
+      Content-Type: [application/json]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      content-type: [application/json]
+    method: GET
+    uri: https://api.passninja.com/v1/passtypes/keys/demo.coupon
+  response:
+    body: {string: '{"passType":"demo.coupon","keys":["barcode","description","expiration","logoText","loyaltyLevel","memberName","organizationName","specialOffer"]}'}
+    headers:
+      Content-Type: [application/json]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"passType": "demo.coupon", "pass": {"logoText": "Example Loyalty", "organizationName":
+      "My org", "description": "This is a loyalty card", "expiration": "2025-12-01T23:59:59Z",
+      "memberName": "Tasio Victoria", "specialOffer": "Free Drinks at 4:30PM!", "loyaltyLevel":
+      "level one", "barcode": "www.google.com"}}'
+    headers:
+      content-type: [application/json]
+    method: POST
+    uri: https://api.passninja.com/v1/passes
+  response:
+    body: {string: '{"passType":"demo.coupon","serialNumber":"2dcf7187-4eea-42a2-aabe-d7ca5a78f3dd","pass":{"logoText":"Example
+        Loyalty","organizationName":"My org","description":"This is a loyalty card","expiration":"2025-12-01T23:59:59Z","memberName":"Tasio
+        Victoria","specialOffer":"Free Drinks at 4:30PM!","loyaltyLevel":"level one","barcode":"www.google.com"},"urls":{"landing":"https://www.passninja.com/installs/xKnNLODqz.html","google":"https://s3.amazonaws.com/www.passninja.com-artifacts/passes/demo.coupon/2dcf7187-4eea-42a2-aabe-d7ca5a78f3dd/google.link?AWSAccessKeyId=ASIAY5CUFZ2DZLSE7KMJ&Expires=1601756617&Signature=PXpnf66o5nMsRw60tksuZLyXWwg%3D&x-amz-security-token=IQoJb3JpZ2luX2VjELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCIAkyo%2FvkKm90eCkoE%2FPfl5uljqs%2FxdnXu%2FN9ip7zP6hEAiBm3RClJaYZd4sJxmxWnAipF2bgotIn0jqhXmEZt7QjfSrZAQit%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAEaDDYxMjIwOTM4MDk5OSIMqQT%2BIAFhl7I5v56UKq0BhRaoRUF4OviQETuHqdTJJmqoBrnqn0y3Gdwwn96uvZCA%2F2t5caZRZb47vc7UJbklaonoOfG7f1AG7t7VFH2pYyqY8S%2BQXYk3Y9ECF47RmcdFNCmwFBEi9scj8XN%2BE1MXMcqshr8lC1TOK6rtel0CDISFu3MmpZktOVhhFDMnrU9qC70rNwwfYFHlauGHCciqnli7kLFtQIPn9wr0S4yPWldqWZyi%2Bh9ZMr6FglAwkJ%2FF%2BgU64QE1cDsTEi3dgz6i48v9J%2BGCkfCY37VgPVvUsDZZrZuk46rBD64%2FzE%2B1hVyhP9vyujI%2FxR37TUoymSrT6ODlTcxNkh8i3E1VCJCX7hvUEEsREUDofv5AStTVLspyktXtPBiX1AvAltxXKBQfxT8Icd%2Fx3LA5XTkBUQEygtD48N9r%2Bzt%2FWIErX81Pcgdh%2Fwju9ShG43vc%2FXstuoQsCsI9DXkPyw%2BzsOVBXYdUKG09I91jSVNVGxuxI6TG7e%2B36VqkhVCIoBeDyroKBX0NrvUcZu%2BqUI7m6D1bTi4GFeC4fW4rALM%3D","apple":"https://s3.amazonaws.com/www.passninja.com-artifacts/passes/demo.coupon/2dcf7187-4eea-42a2-aabe-d7ca5a78f3dd/apple.pkpass?AWSAccessKeyId=ASIAY5CUFZ2DZLSE7KMJ&Expires=1601756617&Signature=wdXayyuJJ522HX7VmFjkKYR2lhg%3D&x-amz-security-token=IQoJb3JpZ2luX2VjELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCIAkyo%2FvkKm90eCkoE%2FPfl5uljqs%2FxdnXu%2FN9ip7zP6hEAiBm3RClJaYZd4sJxmxWnAipF2bgotIn0jqhXmEZt7QjfSrZAQit%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAEaDDYxMjIwOTM4MDk5OSIMqQT%2BIAFhl7I5v56UKq0BhRaoRUF4OviQETuHqdTJJmqoBrnqn0y3Gdwwn96uvZCA%2F2t5caZRZb47vc7UJbklaonoOfG7f1AG7t7VFH2pYyqY8S%2BQXYk3Y9ECF47RmcdFNCmwFBEi9scj8XN%2BE1MXMcqshr8lC1TOK6rtel0CDISFu3MmpZktOVhhFDMnrU9qC70rNwwfYFHlauGHCciqnli7kLFtQIPn9wr0S4yPWldqWZyi%2Bh9ZMr6FglAwkJ%2FF%2BgU64QE1cDsTEi3dgz6i48v9J%2BGCkfCY37VgPVvUsDZZrZuk46rBD64%2FzE%2B1hVyhP9vyujI%2FxR37TUoymSrT6ODlTcxNkh8i3E1VCJCX7hvUEEsREUDofv5AStTVLspyktXtPBiX1AvAltxXKBQfxT8Icd%2Fx3LA5XTkBUQEygtD48N9r%2Bzt%2FWIErX81Pcgdh%2Fwju9ShG43vc%2FXstuoQsCsI9DXkPyw%2BzsOVBXYdUKG09I91jSVNVGxuxI6TG7e%2B36VqkhVCIoBeDyroKBX0NrvUcZu%2BqUI7m6D1bTi4GFeC4fW4rALM%3D"}}'}
+    headers:
+      Content-Type: [application/json]
+    status: {code: 200, message: OK}
+version: 1
