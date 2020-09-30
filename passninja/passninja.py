@@ -43,6 +43,12 @@ class PassNinjaClient:
             ('x-account-id', account_id),
             ('x-api-key', api_key),
         ))
+        class PassObject:
+            create = self._create_pass
+            get = self._get_pass
+            put = self._put_pass
+            delete = self._delete_pass
+        self.passes = PassObject()
 
     def _call(self, url, method=None, **kw):
         url = self._PASSNINJA_BASE_PATH + url
@@ -71,7 +77,7 @@ class PassNinjaClient:
         serial_number = urllib.parse.quote(serial_number)
         return '/passes/%s/%s' % (pass_type, serial_number)
 
-    def pass_create(self, pass_type, client_pass_data):
+    def _create_pass(self, pass_type, client_pass_data):
         """
         Creates a new NFC pass
 
@@ -94,7 +100,7 @@ class PassNinjaClient:
         })
         return SimplePassObject(data)
 
-    def pass_get(self, pass_type, serial_number):
+    def _get_pass(self, pass_type, serial_number):
         """
         Get data for an NFC pass
 
@@ -107,7 +113,7 @@ class PassNinjaClient:
             raise PassNinjaInvalidArgumentsException('Invalid argument types in pass_get method. pass_get(pass_type: str, serial_number: str)' )
         return self._call(self._pass_url(pass_type, serial_number))
 
-    def pass_put(self, pass_type, serial_number, client_pass_data):
+    def _put_pass(self, pass_type, serial_number, client_pass_data):
         """
         Update NFC pass.
 
@@ -126,7 +132,7 @@ class PassNinjaClient:
             'pass': client_pass_data,
         })
 
-    def pass_delete(self, pass_type, serial_number):
+    def _delete_pass(self, pass_type, serial_number):
         """
         Set a currently existing pass to be invalid/inactive. Returns serial_number.
 
@@ -139,3 +145,12 @@ class PassNinjaClient:
             raise PassNinjaInvalidArgumentsException('Invalid argument types in pass_delete method. pass_delete(pass_type: str, serial_number: str)' )
         self._call(self._pass_url(pass_type, serial_number), self._session.delete)
         return serial_number
+
+    _create_pass.__name__ = 'passes.create'
+    _create_pass.__qualname__ = 'PassNinjaClient.passes.create'
+    _get_pass.__name__ = 'passes.get'
+    _get_pass.__qualname__ = 'PassNinjaClient.passes.get'
+    _put_pass.__name__ = 'passes.put'
+    _put_pass.__qualname__ = 'PassNinjaClient.passes.put'
+    _delete_pass.__name__ = 'passes.delete'
+    _delete_pass.__qualname__ = 'PassNinjaClient.passes.delete'

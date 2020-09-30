@@ -68,7 +68,7 @@ deleting passes via the PassNinja api. The methods are outlined below.
 ### Create
 
 ```python
-simple_pass_object = pass_ninja_client.pass_create(
+simple_pass_object = pass_ninja_client.passes.create(
     'demo.coupon', # passType
     {'discount': '50%', 'memberName': 'John'} # passData
 )
@@ -80,7 +80,7 @@ print(simple_pass_object.serialNumber)
 ### Get
 
 ```python
-detailed_pass_object = pass_ninja_client.pass_get(
+detailed_pass_object = pass_ninja_client.passes.get(
     'demo.coupon', # passType
     '97694bd7-3493-4b39-b805-20e3e5e4c770' # serialNumber
 )
@@ -89,7 +89,7 @@ detailed_pass_object = pass_ninja_client.pass_get(
 ### Update
 
 ```python
-simple_pass_object = pass_ninja_client.pass_put(
+simple_pass_object = pass_ninja_client.passes.put(
     'demo.coupon', # passType
     '97694bd7-3493-4b39-b805-20e3e5e4c770', # serialNumber
     {'discount': '100%', 'memberName': 'Ted'} # passData
@@ -99,7 +99,7 @@ simple_pass_object = pass_ninja_client.pass_put(
 ### Delete
 
 ```python
-deleted_pass_serial_number = pass_ninja_client.pass_delete(
+deleted_pass_serial_number = pass_ninja_client.passes.delete(
     'demo.coupon', # passType,
     '97694bd7-3493-4b39-b805-20e3e5e4c770' # serialNumber
 )

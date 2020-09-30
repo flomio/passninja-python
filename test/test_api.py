@@ -27,12 +27,12 @@ class PassNinjaAPITest(unittest.TestCase):
 
         with tape.use_cassette('test_create'):
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
-                test_client.pass_create, None, None)
+                test_client.passes.create, None, None)
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
-                test_client.pass_create, 'demo.coupon', {'firstName': None})
+                test_client.passes.create, 'demo.coupon', {'firstName': None})
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
-                test_client.pass_create, 'demo.coupon', {'barcode': '12345', 'description': 'This is a test description.'})
-            pass_object = test_client.pass_create('demo.coupon', {
+                test_client.passes.create, 'demo.coupon', {'barcode': '12345', 'description': 'This is a test description.'})
+            pass_object = test_client.passes.create('demo.coupon', {
                 'logoText': 'Example Loyalty',
                 'organizationName': 'My org',
                 'description': 'This is a loyalty card',
@@ -47,14 +47,14 @@ class PassNinjaAPITest(unittest.TestCase):
 
         with tape.use_cassette('test_get'):
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
-                test_client.pass_get, None, None)
-            resp = test_client.pass_get(pass_object.passType, pass_object.serialNumber, )
+                test_client.passes.get, None, None)
+            resp = test_client.passes.get(pass_object.passType, pass_object.serialNumber, )
             self.assertEqual(resp['serialNumber'], pass_object.serialNumber)
 
         with tape.use_cassette('test_put'):
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
-                test_client.pass_put, None, None, {})
-            resp = test_client.pass_put(pass_object.passType, pass_object.serialNumber, {
+                test_client.passes.put, None, None, {})
+            resp = test_client.passes.put(pass_object.passType, pass_object.serialNumber, {
                 'logoText': 'Put Example Loyalty',
                 'organizationName': 'Put my org',
                 'description': 'Put this is a loyalty card',
@@ -68,8 +68,8 @@ class PassNinjaAPITest(unittest.TestCase):
 
         with tape.use_cassette('test_delete'):
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
-                test_client.pass_delete, None, None)
-            resp = test_client.pass_delete(pass_object.passType, pass_object.serialNumber)
+                test_client.passes.delete, None, None)
+            resp = test_client.passes.delete(pass_object.passType, pass_object.serialNumber)
 
 
 if __name__ == '__main__':
