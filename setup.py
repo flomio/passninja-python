@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setup(
     name = 'passninja',
-    version = '1.0',
+    version = '1.1',
     author = 'PassNinja',
     license = 'MIT',
     description = 'PassNinja API library for python',
