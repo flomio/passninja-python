@@ -108,4 +108,4 @@ print('Pass deleted. Serial_number: ', deleted_pass_serial_number)
 
 # Documentation
 
-- [PassNinja Docs](https://passninja.com/documentation)
+- [PassNinja Docs](https://www.passninja.com/documentation)
