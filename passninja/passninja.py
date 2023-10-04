@@ -16,6 +16,8 @@ class SimplePassObject:
     """
 
     def __init__(self, data):
+        if 'urls' not in data:
+            raise Exception("API error: {}".format(data['error']))
         self.url = data['urls']['landing']
         self.serialNumber = data['serialNumber']
         self.passType = data['passType']
@@ -62,7 +64,7 @@ class PassNinjaClient:
     def _check_invalid_keys(client_pass_data):
         invalid_keys = [k
             for k, v in client_pass_data.items()
-                if not isinstance(k, str) or not isinstance(v, str)
+                if not isinstance(k, str) or not (isinstance(v, str) or isinstance(v, float) or isinstance(v, int))
         ]
         if invalid_keys:
             raise PassNinjaInvalidArgumentsException('Invalid templateStrings provided in client_pass_data object. Invalid keys: ' + ', '.join(map(str, invalid_keys)))
@@ -107,11 +109,12 @@ class PassNinjaClient:
         :param str pass_type: PassNinja type ID
         :param str serial_number: The serial UUID for the pass you are querying.
 
-        :rtype: dict
+        :rtype: SimplePassObject
         """
         if not isinstance(pass_type, str) or not isinstance(serial_number, str):
             raise PassNinjaInvalidArgumentsException('Invalid argument types in pass_get method. pass_get(pass_type: str, serial_number: str)' )
-        return self._call(self._pass_url(pass_type, serial_number))
+        data = self._call(self._pass_url(pass_type, serial_number))
+        return SimplePassObject(data)
 
     def _put_pass(self, pass_type, serial_number, client_pass_data):
         """
@@ -122,15 +125,16 @@ class PassNinjaClient:
         :param dict client_pass_data: An object containing any key-value pairs in the passType's
             template fields with keys that match the template strings you want to replace
 
-        :rtype: dict
+        :rtype: SimplePassObject
         """
         if not isinstance(pass_type, str) or not isinstance(serial_number, str) or not isinstance(client_pass_data, dict):
             raise PassNinjaInvalidArgumentsException('Invalid argument types in pass_put method. pass_put(pass_type: str, serial_number: str, client_pass_data: dict)' )
         self._check_invalid_keys(client_pass_data)
-        return self._call(self._pass_url(pass_type, serial_number), self._session.put, json={
+        data = self._call(self._pass_url(pass_type, serial_number), self._session.put, json={
             'passType': pass_type,
             'pass': client_pass_data,
         })
+        return SimplePassObject(data)
 
     def _delete_pass(self, pass_type, serial_number):
         """
