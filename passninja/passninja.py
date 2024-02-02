@@ -51,6 +51,7 @@ class PassNinjaClient:
             put = self._put_pass
             delete = self._delete_pass
             find = self._find_passes
+            decrypt = self._decrypt_pass
         self.passes = PassObject()
 
     def _call(self, url, method=None, **kw):
@@ -116,6 +117,22 @@ class PassNinjaClient:
             raise PassNinjaInvalidArgumentsException('Invalid argument types in pass_get method. pass_get(pass_type: str, serial_number: str)' )
         data = self._call(self._pass_url(pass_type, serial_number))
         return SimplePassObject(data)
+
+    def _decrypt_pass(self, pass_template_id, payload):
+        """
+        Get data for a PassNinja pass template
+
+        :param str pass_template_id: PassNinja type ID
+        :param str payload: Raw APDU payload
+
+        :rtype: dict
+        """
+        if not isinstance(pass_template_id, str) or not isinstance(payload, str):
+            raise PassNinjaInvalidArgumentsException('Invalid argument types in find method. find(pass_template_id: str)' )
+        data = self._call('/passes/%s/decrypt' % pass_template_id, self._session.post, json={
+            'payload': payload
+        })
+        return data
 
     def _put_pass(self, pass_type, serial_number, client_pass_data):
         """
