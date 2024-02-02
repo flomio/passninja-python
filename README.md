@@ -69,7 +69,7 @@ deleting passes via the PassNinja api. The methods are outlined below.
 
 ```python
 simple_pass_object = pass_ninja_client.passes.create(
-    'demo.coupon', # passType
+    'ptk_0x14', # passType
     {'discount': '50%', 'memberName': 'John'} # passData
 )
 print(simple_pass_object.url)
@@ -77,11 +77,21 @@ print(simple_pass_object.passType)
 print(simple_pass_object.serialNumber)
 ```
 
+### Find
+
+Finds issued passes for a given pass template key
+
+```python
+pass_objects = pass_ninja_client.passes.find(
+    'ptk_0x14', # passType aka pass template key
+)
+```
+
 ### Get
 
 ```python
 detailed_pass_object = pass_ninja_client.passes.get(
-    'demo.coupon', # passType
+    'ptk_0x14', # passType
     '97694bd7-3493-4b39-b805-20e3e5e4c770' # serialNumber
 )
 ```
@@ -90,7 +100,7 @@ detailed_pass_object = pass_ninja_client.passes.get(
 
 ```python
 simple_pass_object = pass_ninja_client.passes.put(
-    'demo.coupon', # passType
+    'ptk_0x14', # passType
     '97694bd7-3493-4b39-b805-20e3e5e4c770', # serialNumber
     {'discount': '100%', 'memberName': 'Ted'} # passData
 )
@@ -100,7 +110,7 @@ simple_pass_object = pass_ninja_client.passes.put(
 
 ```python
 deleted_pass_serial_number = pass_ninja_client.passes.delete(
-    'demo.coupon', # passType,
+    'ptk_0x14', # passType,
     '97694bd7-3493-4b39-b805-20e3e5e4c770' # serialNumber
 )
 print('Pass deleted. Serial_number: ', deleted_pass_serial_number)

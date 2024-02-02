@@ -50,6 +50,7 @@ class PassNinjaClient:
             get = self._get_pass
             put = self._put_pass
             delete = self._delete_pass
+            find = self._find_passes
         self.passes = PassObject()
 
     def _call(self, url, method=None, **kw):
@@ -135,6 +136,19 @@ class PassNinjaClient:
             'pass': client_pass_data,
         })
         return SimplePassObject(data)
+
+    def _find_passes(self, pass_template_id):
+        """
+        Get data for a PassNinja pass template
+
+        :param str pass_template_id: PassNinja type ID
+
+        :rtype: list of SimplePassObject
+        """
+        if not isinstance(pass_template_id, str):
+            raise PassNinjaInvalidArgumentsException('Invalid argument types in find method. find(pass_template_id: str)' )
+        data = self._call('/passes/%s' % pass_template_id)
+        return [SimplePassObject(item) for item in data['passes']]
 
     def _delete_pass(self, pass_type, serial_number):
         """
