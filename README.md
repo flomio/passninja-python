@@ -96,6 +96,15 @@ detailed_pass_object = pass_ninja_client.passes.get(
 )
 ```
 
+### Get Pass Template Details
+
+```python
+pass_template_object = pass_ninja_client.pass_templates.find(
+  'ptk_0x14', # pass template key
+)
+print(pass_template_object.pass_type_id)
+```
+
 ### Decrypt
 
 Decrypts issued passes payload for a given pass template key

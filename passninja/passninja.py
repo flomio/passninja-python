@@ -22,6 +22,19 @@ class SimplePassObject:
         self.serialNumber = data['serialNumber']
         self.passType = data['passType']
 
+class SimplePassTemplateObject:
+    """
+    Result of fetching an NFC template.
+    """
+
+    def __init__(self, data):
+        self.id = data['id']
+        self.name = data['name']
+        self.pass_type_id = data['pass_type_id']
+        self.platform = data['platform']
+        self.style = data['style']
+        self.issued_pass_count = data['issued_pass_count']
+        self.installed_pass_count = data['installed_pass_count']
 
 class PassNinjaClient:
     """
@@ -53,6 +66,9 @@ class PassNinjaClient:
             find = self._find_passes
             decrypt = self._decrypt_pass
         self.passes = PassObject()
+        class PassTemplateObject:
+            find = self._find_pass_templates
+        self.pass_templates = PassTemplateObject()
 
     def _call(self, url, method=None, **kw):
         url = self._PASSNINJA_BASE_PATH + url
@@ -80,6 +96,17 @@ class PassNinjaClient:
         pass_type = urllib.parse.quote(pass_type)
         serial_number = urllib.parse.quote(serial_number)
         return '/passes/%s/%s' % (pass_type, serial_number)
+
+    def _find_pass_templates(self, pass_template_id):
+        """
+        Fetches an NFC pass template
+        :param str pass_template_id: PassNinja template ID
+        :rtype: SimplePassTemplateObject
+        """
+        if not isinstance(pass_template_id, str):
+            raise PassNinjaInvalidArgumentsException('Invalid argument types in find_pass_templates method. find_pass_templates(pass_template_id: str)' )
+        data = self._call('/pass_templates/%s' % pass_template_id)
+        return SimplePassTemplateObject(data)
 
     def _create_pass(self, pass_type, client_pass_data):
         """
