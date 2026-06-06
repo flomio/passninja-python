@@ -48,13 +48,13 @@ class PassNinjaAPITest(unittest.TestCase):
         with tape.use_cassette('test_get'):
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
                 test_client.passes.get, None, None)
-            resp = test_client.passes.get(pass_object.passType, pass_object.serialNumber, )
+            resp = test_client.passes.get(pass_object.passTemplate, pass_object.serialNumber, )
             self.assertEqual(resp['serialNumber'], pass_object.serialNumber)
 
         with tape.use_cassette('test_put'):
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
                 test_client.passes.put, None, None, {})
-            resp = test_client.passes.put(pass_object.passType, pass_object.serialNumber, {
+            resp = test_client.passes.put(pass_object.passTemplate, pass_object.serialNumber, {
                 'logoText': 'Put Example Loyalty',
                 'organizationName': 'Put my org',
                 'description': 'Put this is a loyalty card',
@@ -69,7 +69,7 @@ class PassNinjaAPITest(unittest.TestCase):
         with tape.use_cassette('test_delete'):
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
                 test_client.passes.delete, None, None)
-            resp = test_client.passes.delete(pass_object.passType, pass_object.serialNumber)
+            resp = test_client.passes.delete(pass_object.passTemplate, pass_object.serialNumber)
 
 
 if __name__ == '__main__':

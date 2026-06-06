@@ -12,7 +12,7 @@ class PassNinjaInvalidArgumentsException(PassNinjaException):
 
 class SimplePassObject:
     """
-    Result of creating a new NFC pass. Contains attributes: `url`, `serialNumber`, `passType`.
+    Result of creating a new NFC pass. Contains attributes: `url`, `serialNumber`, `passTemplate`.
     """
 
     def __init__(self, data):
@@ -20,7 +20,7 @@ class SimplePassObject:
             raise Exception("API error: {}".format(data['error']))
         self.url = data['urls']['landing']
         self.serialNumber = data['serialNumber']
-        self.passType = data['passType']
+        self.passTemplate = data['passTemplate']
 
 class SimplePassTemplateObject:
     """
@@ -113,7 +113,7 @@ class PassNinjaClient:
         Creates a new NFC pass
 
         :param str pass_type: PassNinja type ID
-        :param dict client_pass_data: An object containing any key-value pairs in the passType's
+        :param dict client_pass_data: An object containing any key-value pairs in the pass template's
             template fields with keys that match the template strings you want to replace
 
         :rtype: SimplePassObject
@@ -126,7 +126,7 @@ class PassNinjaClient:
         if required_keys:
             raise PassNinjaInvalidArgumentsException('Some keys that are required for this pass_type are missing on the provided client_pass_data object. Missing keys: ' + ', '.join(required_keys))
         data = self._call('/passes', self._session.post, json={
-            'passType': pass_type,
+            'passTemplate': pass_type,
             'pass': client_pass_data,
         })
         return SimplePassObject(data)
@@ -167,7 +167,7 @@ class PassNinjaClient:
 
         :param str pass_type: PassNinja type ID
         :param str serial_number: The serial UUID for the pass you want to update.
-        :param dict client_pass_data: An object containing any key-value pairs in the passType's
+        :param dict client_pass_data: An object containing any key-value pairs in the pass template's
             template fields with keys that match the template strings you want to replace
 
         :rtype: SimplePassObject
@@ -176,7 +176,7 @@ class PassNinjaClient:
             raise PassNinjaInvalidArgumentsException('Invalid argument types in pass_put method. pass_put(pass_type: str, serial_number: str, client_pass_data: dict)' )
         self._check_invalid_keys(client_pass_data)
         data = self._call(self._pass_url(pass_type, serial_number), self._session.put, json={
-            'passType': pass_type,
+            'passTemplate': pass_type,
             'pass': client_pass_data,
         })
         return SimplePassObject(data)
