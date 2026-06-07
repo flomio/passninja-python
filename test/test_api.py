@@ -49,7 +49,7 @@ class PassNinjaAPITest(unittest.TestCase):
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
                 test_client.passes.get, None, None)
             resp = test_client.passes.get(pass_object.passTemplate, pass_object.serialNumber, )
-            self.assertEqual(resp['serialNumber'], pass_object.serialNumber)
+            self.assertEqual(resp.serialNumber, pass_object.serialNumber)
 
         with tape.use_cassette('test_put'):
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,
@@ -64,7 +64,7 @@ class PassNinjaAPITest(unittest.TestCase):
                 'loyaltyLevel': 'put level one',
                 'barcode': 'www.put.com',
             })
-            self.assertEqual(resp['serialNumber'], pass_object.serialNumber)
+            self.assertEqual(resp.serialNumber, pass_object.serialNumber)
 
         with tape.use_cassette('test_delete'):
             self.assertRaises(passninja.PassNinjaInvalidArgumentsException,

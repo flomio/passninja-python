@@ -67,6 +67,7 @@ class PassNinjaClient:
             create = self._create_pass
             get = self._get_pass
             put = self._put_pass
+            patch = self._patch_pass
             delete = self._delete_pass
             find = self._find_passes
             decrypt = self._decrypt_pass
@@ -186,6 +187,27 @@ class PassNinjaClient:
         })
         return SimplePassObject(data)
 
+    def _patch_pass(self, pass_type, serial_number, client_pass_data):
+        """
+        Partially update an NFC pass. Only the provided fields are changed;
+        unlike put (full replace), omitted fields keep their current values.
+
+        :param str pass_type: PassNinja type ID
+        :param str serial_number: The serial UUID for the pass you want to update.
+        :param dict client_pass_data: An object containing the key-value pairs in the
+            pass template's fields you want to change
+
+        :rtype: SimplePassObject
+        """
+        if not isinstance(pass_type, str) or not isinstance(serial_number, str) or not isinstance(client_pass_data, dict):
+            raise PassNinjaInvalidArgumentsException('Invalid argument types in pass_patch method. pass_patch(pass_type: str, serial_number: str, client_pass_data: dict)' )
+        self._check_invalid_keys(client_pass_data)
+        data = self._call(self._pass_url(pass_type, serial_number), self._session.patch, json={
+            'passTemplate': pass_type,
+            'pass': client_pass_data,
+        })
+        return SimplePassObject(data)
+
     def _find_passes(self, pass_template_id):
         """
         Get data for a PassNinja pass template
@@ -219,5 +241,7 @@ class PassNinjaClient:
     _get_pass.__qualname__ = 'PassNinjaClient.passes.get'
     _put_pass.__name__ = 'passes.put'
     _put_pass.__qualname__ = 'PassNinjaClient.passes.put'
+    _patch_pass.__name__ = 'passes.patch'
+    _patch_pass.__qualname__ = 'PassNinjaClient.passes.patch'
     _delete_pass.__name__ = 'passes.delete'
     _delete_pass.__qualname__ = 'PassNinjaClient.passes.delete'
