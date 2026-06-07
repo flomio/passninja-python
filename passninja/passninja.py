@@ -19,7 +19,12 @@ class SimplePassObject:
         if 'urls' not in data:
             raise Exception("API error: {}".format(data['error']))
         self.url = data['urls']['landing']
+        self.urls = data.get("urls")
         self.serialNumber = data['serialNumber']
+        self.id = data.get("id")
+        self.issuedDate = data.get("issuedDate")
+        self.installedDate = data.get("installedDate")
+        self.status = data.get("status")
         self.passTemplate = data['passTemplate']
 
 class SimplePassTemplateObject:
